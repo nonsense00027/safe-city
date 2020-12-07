@@ -1,13 +1,6 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  Picker,
-  TouchableOpacity,
-} from "react-native";
-import Header from "../Header";
+import styles from "./styles";
+import { Text, TextInput, View, Picker, TouchableOpacity } from "react-native";
 
 export default function Register() {
   const [firstname, setFirstname] = useState("");
@@ -18,9 +11,9 @@ export default function Register() {
   const [number, setNumber] = useState("");
   const [address, setAddress] = useState("");
   const [baranggay, setBaranggay] = useState("");
+
   return (
     <View style={styles.register}>
-      <Header text="Sign Up" />
       <View style={styles.register__form}>
         <TextInput
           style={styles.register__formTextInput}
@@ -47,6 +40,7 @@ export default function Register() {
         <Picker
           selectedValue={gender}
           mode="dropdown"
+          style={{ marginBottom: 10 }}
           onValueChange={(itemValue, itemIndex) => setGender(itemValue)}
         >
           <Picker.Item label="Select gender" value="" />
@@ -69,76 +63,17 @@ export default function Register() {
         <Picker
           selectedValue={baranggay}
           mode="dropdown"
+          style={{ marginBottom: 10 }}
           onValueChange={(itemValue, itemIndex) => setBaranggay(itemValue)}
         >
           <Picker.Item label="Select baranggay" value="" />
         </Picker>
+      </View>
+      <View style={styles.register__submit}>
         <TouchableOpacity>
           <Text style={styles.register__formButton}>Continue</Text>
         </TouchableOpacity>
       </View>
-      {/* <View style={styles.div}>
-        <Text style={styles.title}>Sign Up</Text>
-      </View> */}
-      {/* <View style={styles.container}>
-        <Text>Basic information</Text>
-        <View style={styles.formgroup}>
-          <TextInput
-            autoFocus
-            autoCapitalize="words"
-            onChangeText={(val) => setFirstname(val)}
-            value={firstname}
-            placeholder="Firstname"
-          />
-        </View>
-        <View style={styles.formgroup}>
-          <TextInput
-            autoCapitalize="words"
-            onChangeText={(val) => setMiddlename(val)}
-            value={middlename}
-            placeholder="Middlename"
-          />
-        </View>
-        <View style={styles.formgroup}>
-          <TextInput
-            autoCapitalize="words"
-            onChangeText={(val) => setLastname(val)}
-            value={lastname}
-            placeholder="Lastname"
-          />
-        </View>
-        <View style={styles.formgroup}>
-          <Text>Birthdate</Text>
-          <TextInput onChangeText={(val) => setDate(val)} value={date} />
-          <Text>Gender</Text>
-          <TextInput onChangeText={(val) => setGender(val)} value={gender} />
-        </View>
-      </View> */}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  register: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  register__form: {},
-  register__formTextInput: {
-    paddingHorizontal: 8,
-    paddingVertical: 8,
-    backgroundColor: "#F4F6F9",
-    borderRadius: 7,
-    marginBottom: 10,
-  },
-  register__formButton: {
-    backgroundColor: "#8AC926",
-    fontSize: 18,
-    color: "#fff",
-    paddingVertical: 10,
-    textAlign: "center",
-    borderRadius: 25,
-    marginHorizontal: 30,
-    marginTop: 30,
-  },
-});
